@@ -1,6 +1,6 @@
 package com.tuwaiq.jetpackcomposetest.ui.theme
 
-import androidx.compose.foundation.isSystemInDarkTheme
+import android.content.res.Resources
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
@@ -29,7 +29,7 @@ private val LightColorPalette = lightColors(
 )
 
 @Composable
-fun JetpackComposetestTheme(
+fun MyProjectTheme(
     darkTheme: Boolean = true,
     content: @Composable () -> Unit
 ) {

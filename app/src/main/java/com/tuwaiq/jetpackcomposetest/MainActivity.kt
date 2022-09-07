@@ -1,6 +1,8 @@
 package com.tuwaiq.jetpackcomposetest
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.res.Resources
 import android.media.Image
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -23,16 +25,17 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.tuwaiq.jetpackcomposetest.ui.theme.JetpackComposetestTheme
+import com.tuwaiq.jetpackcomposetest.ui.theme.MyProjectTheme
+import java.io.Serializable
 
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            JetpackComposetestTheme{
+            MyProjectTheme{
                 MyApp{
-                    startActivity(Intent(this , InfoActivity::class.java))
+                    startActivity(InfoActivity.newIntent(this, it))
                 }
             }
 
@@ -40,10 +43,15 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+
+
 @Composable
 fun MyApp(navigateToInfo: (Course) -> Unit) {
     Scaffold(
-        content = {
+        content = { padding ->
+            Column(modifier = Modifier.padding(padding)) {
+                
+            }
             NewCoursesContent(navigateToInfo = navigateToInfo)
         }
     )
@@ -97,7 +105,7 @@ data class Course(
     val duration:Int,
     val photo:Int = 0,
     val des:String
-)
+) : Serializable
 
 object DataProvider{
     val categoryList = listOf(
