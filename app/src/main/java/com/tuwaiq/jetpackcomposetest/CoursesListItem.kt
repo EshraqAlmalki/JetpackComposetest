@@ -27,7 +27,7 @@ fun CoursesListItem(course: Course, navigateToInfo : (Course) -> Unit) {
 
        shape = RoundedCornerShape(corner = CornerSize(16.dp))){
        Row(Modifier.clickable { navigateToInfo(course) }) {
-           setImg(course = course)
+          // setImg(course = course)
            Column(modifier = Modifier
                .padding(16.dp)
                .fillMaxWidth()
